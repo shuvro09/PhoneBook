@@ -1,0 +1,75 @@
+
+h2{
+  text-align: center;
+}
+form{
+  width: 100%;
+}
+form label{
+  float: left;
+  width: 25%;
+}
+form input{
+  float: right;
+  max-width:100%;
+  min-width: 70%;
+  margin:auto;
+}
+form button{
+  width: 100%;
+  margin:auto;
+}
+
+input{
+  width:70%;
+  margin: auto;
+}
+.link{
+float: right
+}
+h4{
+  margin-bottom: 5px;
+}
+p{
+  margin-top: 0px;
+  font-size: 13px;
+  font-weight: 550
+}
+@media screen and (min-width:500px)
+{
+  #contactForm{
+    width:75%;
+    margin: auto;
+  }
+  .addContact{
+    width:75%;
+    margin: auto;
+  }
+}
+.fontIcons{
+  float: right;
+  width:10%;
+  
+  padding-right: 10px;
+  padding-top: 10px;
+}
+.contact:hover{
+  background-color: rgba(206, 204, 202, 0.322);
+  border-radius: 25px;
+}
+.contactInfo{
+  width:30%;
+  margin:0;
+  padding-left: 10px;
+}
+@media screen and (min-width:700px)
+{
+  #contactForm{
+    width:50%;
+    margin: auto;
+  }
+  .addContact{
+    width:50%;
+    margin: auto;
+  }
+}
