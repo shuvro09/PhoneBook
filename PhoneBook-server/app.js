@@ -15,7 +15,9 @@ const db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+// Contact.deleteMany({}).then((doc) => {
+//     console.log(doc)
+// })
 app.use(cors())
 app.use(bodyParser.json())
 app.use(function (err, req, res, next) {
@@ -25,6 +27,7 @@ app.use(function (err, req, res, next) {
 })
 app.get("/", (req, res) => {
     console.log("GET request received");
+
     Contact.find()
         .then((doc) => {
             res.send(doc)
@@ -45,7 +48,6 @@ app.post("/", (req, res) => {
             res.send(result)
         })
         .catch(err => { console.log(err) })
-    console.log()
-    //res.send(contact)
+
 })
 app.listen(PORT, () => console.log("running"))

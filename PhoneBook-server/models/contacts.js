@@ -4,6 +4,6 @@ const mongoose = require('mongoose');
 const contactsSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    number: Number
+    number: String
 })
 module.exports = mongoose.model("Contacts", contactsSchema)
