@@ -50,4 +50,10 @@ app.post("/", (req, res) => {
         .catch(err => { console.log(err) })
 
 })
+app.delete("/", (req, res) => {
+    console.log(req.body)
+    Contact.deleteOne({ _id: req.body.id })
+        .then((result) => { console.log(result); res.send(result) })
+        .catch(error => { res.send(error) })
+})
 app.listen(PORT, () => console.log("running"))
