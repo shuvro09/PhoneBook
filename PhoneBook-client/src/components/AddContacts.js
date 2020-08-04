@@ -33,6 +33,7 @@ function AddContacts(props) {
     }
     return (
         <>
+            {/**link back to homepage */}
             <Link to="/"><FontAwesomeIcon icon={faArrowLeft} /></Link>
             <form>
                 <label >Name
@@ -49,6 +50,7 @@ function AddContacts(props) {
                     } />
                 </label>
                 <br></br><br></br>
+                {/**button to post data */}
                 <button id="addContactButton" onClick={(e) => { e.preventDefault(); handleChange() }}>Add</button>
 
             </form>
