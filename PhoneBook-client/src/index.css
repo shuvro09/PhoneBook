@@ -1,75 +1,60 @@
-
-h2{
+html,body{
+  width: 100%;
+}
+h1{
   text-align: center;
 }
-form{
-  width: 100%;
-}
-form label{
-  float: left;
-  width: 25%;
-}
-form input{
-  float: right;
-  max-width:100%;
-  min-width: 70%;
-  margin:auto;
-}
-form button{
-  width: 100%;
-  margin:auto;
-}
-
-input{
-  width:70%;
+#app{
+  width: 60%;
   margin: auto;
 }
-.link{
-float: right
+.contactList{
+  padding: 0%;
 }
-h4{
-  margin-bottom: 5px;
-}
-p{
-  margin-top: 0px;
-  font-size: 13px;
-  font-weight: 550
-}
-@media screen and (min-width:500px)
-{
-  #contactForm{
-    width:75%;
-    margin: auto;
-  }
-  .addContact{
-    width:75%;
-    margin: auto;
-  }
-}
-.fontIcons{
-  float: right;
-  width:10%;
-  
-  padding-right: 10px;
+.contact{
+  padding-left: 25px;
+  list-style: none;
+  border-radius: 25px;;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 .contact:hover{
-  background-color: rgba(206, 204, 202, 0.322);
-  border-radius: 25px;
+  background-color: blanchedalmond;
 }
-.contactInfo{
-  width:30%;
-  margin:0;
-  padding-left: 10px;
+.searchBar{
+  width: 60%;
+  margin: auto;
 }
-@media screen and (min-width:700px)
-{
-  #contactForm{
-    width:50%;
-    margin: auto;
-  }
-  .addContact{
-    width:50%;
-    margin: auto;
-  }
+.searchInput{
+  width: 80%;
+  margin: auto;
+}
+#addContactIcon{
+  width: 10%;
+  float: right;
+}
+#addContactButton{
+  width: 100%;
+  padding:5px 5px;
+}
+form{
+  width: 80%;
+  margin: auto;
+}
+.contactFormInput{
+  width:100%;
+  padding:5px 5px;
+  box-sizing : border-box;
+  display: inline-block;
+  
+}
+.deleteIcon{
+  float: right;
+  padding-right: 25px;
+}
+.contact h3{
+  margin: 0;
+}
+p{
+  text-align: center;
 }

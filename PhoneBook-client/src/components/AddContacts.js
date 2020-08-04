@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 function AddContacts(props) {
     const [addData, setAddData] = useState({ name: "initial", number: "initial" })
     const history = useHistory()
@@ -17,11 +19,10 @@ function AddContacts(props) {
                 throw Error(response.statusText)
             }
         }
-        fetch("http://192.168.1.5:3001", {
+        fetch("http://192.168.1.7:3001", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: JSON.stringify(addData)
         })
@@ -32,22 +33,25 @@ function AddContacts(props) {
     }
     return (
         <>
-            <button onClick={() => { history.push("/") }}>Back</button>
-            <input type="text" placeholder="enter name" onChange={(e) => {
-                //console.log(e.target.value)
-                setAddData({ ...addData, name: e.target.value })
-            }
-            }>
+            <Link to="/"><FontAwesomeIcon icon={faArrowLeft} /></Link>
+            <form>
+                <label >Name
+                <input className="contactFormInput" type="text" placeholder="enter name" name="name" onChange={(e) => {
+                        setAddData({ ...addData, name: e.target.value })
+                    }
+                    } />
+                </label>
+                <br></br><br></br>
+                <label >Number
+                <input className="contactFormInput" type="text" name="number" placeholder="enter number" onChange={(e) => {
+                        setAddData({ ...addData, number: e.target.value })
+                    }
+                    } />
+                </label>
+                <br></br><br></br>
+                <button id="addContactButton" onClick={(e) => { e.preventDefault(); handleChange() }}>Add</button>
 
-            </input>
-            <input type="text" placeholder="enter number" onChange={(e) => {
-                //console.log(e.target.value)
-                setAddData({ ...addData, number: e.target.value })
-            }
-            }></input>
-
-            <button onClick={() => { handleChange() }}>Add</button>
-
+            </form>
         </>
     )
 }
