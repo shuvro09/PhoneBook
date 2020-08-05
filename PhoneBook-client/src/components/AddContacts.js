@@ -41,9 +41,9 @@ function AddContacts(props) {
             body: JSON.stringify(addData)
         })
             .then(checkError)
-            .then((data) => { props.fetchdata.setfData([...props.fetchdata.data, data]); console.log(data) })
+            .then((data) => { props.fetchdata.setfData([...props.fetchdata.data, data]); console.log(data); history.push("/") })
             .catch((err) => { console.log(err) })
-        history.push("/")
+
     }
     return (
         <>
