@@ -7,19 +7,27 @@ function AddContacts(props) {
     const [addData, setAddData] = useState({ name: "", number: "" })
     const [nameError, setNameError] = useState({ state: false, message: "" })
     const [numberError, setNumberError] = useState({ state: false, message: "" })
+    const [serverError, setServerError] = useState({ status: false, message: "" })
     const history = useHistory()
     const validate = () => {
         if (addData.name.length === 0) {
             setNameError({ state: true, message: "Name cannot be Empty" })
-            return (true)
+            return true;
         }
         if (addData.number.length === 0) {
             setNumberError({ state: true, message: "Phone number cannot be Empty" })
-            return (true)
+            return true;
         }
+        //var z1 = "^[0-9]*\d$";
+
+        if (!(new RegExp(/^[0-9]*\d$/)).test(addData.number)) {
+            setNumberError({ state: true, message: "Phone number must contain digits only" })
+            return true;
+        }
+
         if (addData.number.length < 10 || addData.number.length > 10) {
             setNumberError({ state: true, message: "Phone number must contain 10 digits only" })
-            return (true)
+            return true;
         }
     }
     const handleChange = () => {
@@ -42,11 +50,15 @@ function AddContacts(props) {
         })
             .then(checkError)
             .then((data) => { props.fetchdata.setfData([...props.fetchdata.data, data]); console.log(data); history.push("/") })
-            .catch((err) => { console.log(err) })
+            .catch((err) => {
+                console.log(err); setServerError({ status: true, message: `${err} Try again later` })
+                setTimeout(() => { setServerError({ status: false, message: "" }) }, 3000)
+            })
 
     }
     return (
         <>
+            {serverError.status ? <p className="showError">{serverError.message}</p> : null}
             {/**link back to homepage */}
             <Link to="/"><FontAwesomeIcon icon={faArrowLeft} /></Link>
             <form>
@@ -57,7 +69,7 @@ function AddContacts(props) {
 
                     }
                     } />
-                    {nameError.state ? <small style={{ color: "red" }}>{nameError.message}</small> : ""}
+                    {nameError.state ? <small style={{ color: "red" }}>{nameError.message}</small> : null}
                 </label>
                 <br></br><br></br>
                 <label >Number
@@ -66,7 +78,7 @@ function AddContacts(props) {
                         setAddData({ ...addData, number: e.target.value })
                     }
                     } />
-                    {numberError.state ? <small style={{ color: "red" }}>{numberError.message}</small> : ""}
+                    {numberError.state ? <small style={{ color: "red" }}>{numberError.message}</small> : null}
                 </label>
                 <br></br><br></br>
                 {/**button to post data */}

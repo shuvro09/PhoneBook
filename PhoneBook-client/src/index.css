@@ -58,3 +58,8 @@ form{
 p{
   text-align: center;
 }
+.showError{
+  padding: 10px;
+  background-color: crimson;
+  color: white;
+}
