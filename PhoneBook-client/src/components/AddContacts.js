@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import fetchData from '../fetchData.js'
+
 function AddContacts(props) {
     const [addData, setAddData] = useState({ name: "", number: "" })
     const [nameError, setNameError] = useState({ state: false, message: "" })
@@ -41,13 +43,7 @@ function AddContacts(props) {
                 throw Error(response.statusText)
             }
         }
-        fetch("http://192.168.1.7:3001", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(addData)
-        })
+        fetchData("POST", 'application/json', JSON.stringify(addData))
             .then(checkError)
             .then((data) => { props.fetchdata.setfData([...props.fetchdata.data, data]); console.log(data); history.push("/") })
             .catch((err) => {

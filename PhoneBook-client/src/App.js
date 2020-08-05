@@ -4,7 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import AddContacts from './components/AddContacts.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
-
+import fetchData from './fetchData.js'
 
 function App() {
   //fdata= fetched data from server
@@ -13,9 +13,7 @@ function App() {
   const [search, setSearch] = useState()
 
   useEffect(() => {
-    const options = {
-      method: "GET"
-    }
+
     //function for error checking
     const checkError = (response) => {
       if (response.status >= 200 && response.status <= 299)
@@ -25,7 +23,7 @@ function App() {
       }
     }
     //http get request
-    fetch("http://192.168.1.7:3001", options)
+    fetchData("GET")
       .then(checkError)
       .then((data) => { console.log(data); setData(data); })
       //.then(result => {  console.log(result) })

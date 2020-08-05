@@ -1,18 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import fetchData from '../fetchData.js'
 //data=fetched data, search=filtered data, update=set Fetched data , updateSearch=setSearch
 const handleDelete = (id, data, update, search, updateSearch) => {
-    const options = {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id: id })
-    }
-
     //http delete request
-    fetch("http://192.168.1.7:3001", options)
+    fetchData("DELETE", 'application/json', JSON.stringify({ id: id }))
         .then(response => response.json())
         .then(res => {
             if (res.deletedCount) {
